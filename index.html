@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网站跳转体验</title>
+    <title>在线观看</title>
     <style>
         * {
             margin: 0;
@@ -19,6 +19,7 @@
             align-items: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
+            overflow: hidden;
         }
         
         .container {
@@ -30,6 +31,7 @@
             padding: 40px 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             overflow: hidden;
+            position: relative;
         }
         
         .question {
@@ -84,10 +86,25 @@
             transform: translateX(100%);
         }
         
-        .image-container {
+        .image-wrapper {
             width: 90%;
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+        }
+        
+        .online-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            animation: glow 2s infinite alternate;
+        }
+        
+        .image-container {
+            width: 100%;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
@@ -100,6 +117,7 @@
             width: 100%;
             height: auto;
             display: block;
+            border-radius: 15px;
         }
         
         .video-container {
@@ -136,6 +154,11 @@
             100% { transform: scale(1); }
         }
         
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
+            to { text-shadow: 0 0 20px #ffcc00, 0 0 30px #ffcc00; }
+        }
+        
         /* 响应式设计 */
         @media (max-width: 768px) {
             .container {
@@ -150,6 +173,10 @@
             .jump-btn {
                 font-size: 1.5rem;
                 padding: 16px 40px;
+            }
+            
+            .online-text {
+                font-size: 2rem;
             }
         }
         
@@ -167,6 +194,11 @@
                 font-size: 1.2rem;
                 padding: 14px 35px;
             }
+            
+            .online-text {
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
         }
     </style>
 </head>
@@ -180,8 +212,11 @@
         
         <!-- 图片页内容（默认隐藏） -->
         <div id="image-page" style="display: none;">
-            <div class="image-container">
-                <img src="https://xjimage.qq.com/5c45cd4a4d962f9fe15183fbd9232807.gif" alt="动态图片">
+            <div class="image-wrapper">
+                <div class="online-text">在线观看</div>
+                <div class="image-container">
+                    <img src="https://xjimage.qq.com/5c45cd4a4d962f9fe15183fbd9232807.gif" alt="动态图片">
+                </div>
             </div>
             <div class="video-container">
                 <video controls>
